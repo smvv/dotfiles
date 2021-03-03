@@ -10,10 +10,25 @@ PROFILE="server"
 SRC="$(pwd)/${PROFILE}"
 
 function install_homedir() {
-    echo "install $1"
-    ln -is "${SRC}/$1" "$HOME/$1"
+    if [ -e "$HOME/$1" ]; then
+        echo "skip existing $1"
+    else
+        echo "install $1"
+        ln -s "${SRC}/$1" "$HOME/$1"
+    fi
 }
 
 # install_homedir .dir_colors
 install_homedir .vim
 install_homedir .vimrc
+
+set -x
+
+# Install Vundle
+if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
+    mkdir -p "$HOME/.vim/bundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+fi
+
+# Install vim plugins
+vim +PluginInstall +qall
