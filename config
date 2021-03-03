@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -ue -o pipefail
+
+# Switch script's directory
+cd `dirname "$0"`
+
+PROFILE="server"
+
+SRC="$(pwd)/${PROFILE}"
+
+function install_homedir() {
+    echo "install $1"
+    ln -is "${SRC}/$1" "$HOME/$1"
+}
+
+# install_homedir .dir_colors
+install_homedir .vim
+install_homedir .vimrc
