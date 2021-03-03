@@ -1,0 +1,37 @@
+priority -1
+snippet rc
+/* @flow */
+import React, {Component} from 'react';
+
+type Props = {};
+type State = {};
+
+export class ${1:ClassName} extends Component<Props, State> {
+	render() {
+		return (
+			${0:<div />}
+		);
+	}
+}
+endsnippet
+
+snippet rct
+/* @flow */
+import React, {Component} from 'react';
+import {withTranslation} from 'react-i18next';
+
+type Props = {
+	t: (string, ?{}) => string,
+};
+type State = {};
+
+export class ${1:ClassName}_ extends Component<Props, State> {
+	render() {
+		return (
+			${0:<div />}
+		);
+	}
+}
+
+export const $1 = withTranslation()($1_);
+endsnippet
