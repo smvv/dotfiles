@@ -18,7 +18,7 @@ function install_homedir() {
     fi
 }
 
-# install_homedir .dir_colors
+install_homedir .dir_colors
 install_homedir .vim
 install_homedir .vimrc
 
@@ -32,3 +32,4 @@ fi
 
 # Install vim plugins
 vim +PluginInstall +qall
+vim '+fzf#install()' +qall
