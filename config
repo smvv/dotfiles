@@ -33,3 +33,6 @@ fi
 # Install vim plugins
 vim +PluginInstall +qall
 vim '+fzf#install()' +qall
+
+vim '+call coc#util#install()' +qall
+vim '+CocInstall coc-tsserver coc-json coc-html coc-css' +qall
