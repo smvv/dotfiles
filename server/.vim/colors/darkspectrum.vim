@@ -92,10 +92,16 @@ hi PmenuThumb   guifg=#888888 guibg=#888888
 
 hi cppSTLType   cterm=bold guifg=#729fcf gui=bold
 
-hi spellBad     guisp=#fcaf3e cterm=underline
-hi spellCap     guisp=#73d216
-hi spellRare    guisp=#ad7fa8
-hi spellLocal   guisp=#729fcf
+" hi spellBad     guisp=#fcaf3e cterm=underline
+" hi spellCap     guisp=#73d216
+" hi spellRare    guisp=#ad7fa8
+" hi spellLocal   guisp=#729fcf
+
+hi clear SpellBad
+hi SpellBad cterm=underline
+" Set style for gVim
+hi SpellBad gui=undercurl
+
 
 hi link cppSTL          Function
 hi link Error           Todo

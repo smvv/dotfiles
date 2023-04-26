@@ -46,6 +46,7 @@ Plugin 'ambv/black'
 Plugin 'prettier/vim-prettier'
 Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'z0mbix/vim-shfmt'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -307,7 +308,7 @@ au BufRead,BufNewFile *.patch syn match diffFile "^index .*$"
 
 " Vim 7.3 does not set the proper filetype for TeX files
 au BufNewFile,BufRead *.tex set ft=tex
-au BufNewFile,BufRead *.md set ft=markdown
+au BufNewFile,BufRead *.md set ft=markdown spell
 au BufNewFile,BufRead *.hbs set ft=html
 
 " Disable opening the quickfix after parsing errors.
@@ -319,10 +320,12 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 let g:go_fmt_command = "goimports"
 
+let g:python3_host_prog = "/usr/local/bin/python3"
+
 let g:ale_linters = {
     \ 'javascript': ['eslint', 'flow'],
     \ 'javascript.jsx': ['eslint', 'flow'],
-    \ 'python': ['flake8', 'pylint'],
+    \ 'python': ['flake8', 'pylint', 'mypy'],
     \ 'go': ['gobuild', 'gofmt', 'govet'],
     \ }
 

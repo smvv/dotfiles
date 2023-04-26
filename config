@@ -18,9 +18,21 @@ function install_homedir() {
     fi
 }
 
+function install_config_dir() {
+    if [ -e "$HOME/.config/$1" ]; then
+        echo "skip existing $1"
+    else
+        echo "install .config/$1"
+        ln -s "${SRC}/$1" "$HOME/.config/$1"
+    fi
+}
+
 install_homedir .dir_colors
 install_homedir .vim
 install_homedir .vimrc
+install_homedir .zshrc
+
+install_config_dir kitty
 
 set -x
 
@@ -35,4 +47,21 @@ vim +PluginInstall +qall
 vim '+fzf#install()' +qall
 
 vim '+call coc#util#install()' +qall
-vim '+CocInstall coc-tsserver coc-json coc-html coc-css' +qall
+vim '+CocInstall coc-tsserver coc-json coc-html coc-css coc-go' +qall
+
+if [ -n "$(which brew)" ]; then
+    brew install \
+        macvim \
+        meetingbar \
+        golang \
+        hyperfine \
+        htop \
+        fzf \
+        python \
+        jq \
+        coreutils \
+        gawk \
+    ;
+
+    brew install --cask flux;
+fi
