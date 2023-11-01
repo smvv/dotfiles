@@ -73,9 +73,9 @@ ZSH_THEME="afowler"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    zsh-autosuggestions
     )
 
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -104,9 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+HOMEBREW_PREFIX="/opt/homebrew"
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
@@ -118,6 +120,10 @@ gch() {
 
 alias ytw="yarn test --watch"
 alias ytd="yarn test:debug --watch"
+
+export RUST_BACKTRACE=full
+export PATH="$PATH:$PWD/node_modules/.bin"
+export RUST_MIN_STACK=16777216
 
 # -i: Causes searches to ignore case; that is, uppercase and lowercase are
 #     considered identical. This option is ignored if any uppercase letters

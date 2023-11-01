@@ -19,6 +19,8 @@ function install_homedir() {
 }
 
 function install_config_dir() {
+    mkdir -p "$HOME/.config"
+
     if [ -e "$HOME/.config/$1" ]; then
         echo "skip existing $1"
     else
@@ -30,24 +32,13 @@ function install_config_dir() {
 install_homedir .dir_colors
 install_homedir .vim
 install_homedir .vimrc
+
+rm -f ~/.zshrc
 install_homedir .zshrc
 
 install_config_dir kitty
 
 set -x
-
-# Install Vundle
-if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
-    mkdir -p "$HOME/.vim/bundle"
-    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
-fi
-
-# Install vim plugins
-vim +PluginInstall +qall
-vim '+fzf#install()' +qall
-
-vim '+call coc#util#install()' +qall
-vim '+CocInstall coc-tsserver coc-json coc-html coc-css coc-go' +qall
 
 if [ -n "$(which brew)" ]; then
     brew install \
@@ -58,10 +49,35 @@ if [ -n "$(which brew)" ]; then
         htop \
         fzf \
         python \
+        pipenv \
+        pyenv \
         jq \
         coreutils \
         gawk \
+        node \
+        yarn \
+        zsh-autosuggestions \
     ;
 
+    brew install --cask kitty;
     brew install --cask flux;
 fi
+
+# Install Vundle
+if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
+    mkdir -p "$HOME/.vim/bundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+fi
+
+# Install vim plugins
+vim +PluginInstall +qall
+
+pushd ~/.vim/bundle/coc.nvim 
+yarn install --ignore-engines;
+yarn build;
+popd;
+
+vim '+fzf#install()' +qall
+
+vim '+call coc#util#install()' +qall
+vim '+CocInstall coc-tsserver coc-json coc-html coc-css coc-go' +qall
