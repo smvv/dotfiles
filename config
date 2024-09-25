@@ -55,7 +55,6 @@ if [ -n "$(which brew)" ]; then
         coreutils \
         gawk \
         node \
-        yarn \
         zsh-autosuggestions \
     ;
 
@@ -77,7 +76,7 @@ yarn install --ignore-engines;
 yarn build;
 popd;
 
-vim '+fzf#install()' +qall
+vim '+fzf#install()' '+qall'
 
-vim '+call coc#util#install()' +qall
-vim '+CocInstall coc-tsserver coc-json coc-html coc-css coc-go' +qall
+vim '+call coc#util#install()' '+qall'
+vim '+CocInstall coc-tsserver coc-json coc-html coc-css coc-go @yaegassy/coc-tailwindcss3' '+qall'
