@@ -55,7 +55,11 @@ if [ -n "$(which brew)" ]; then
         coreutils \
         gawk \
         node \
+        yarn \
         zsh-autosuggestions \
+        firefox \
+        google-chrome \
+        rectangle \
     ;
 
     brew install --cask kitty;

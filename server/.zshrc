@@ -132,3 +132,4 @@ export RUST_MIN_STACK=16777216
 # --use-color:
 #     Enable ANSI color codes.
 # export LESS="--ignore-case --use-color"
+export PATH="/opt/homebrew/bin:$PATH"
