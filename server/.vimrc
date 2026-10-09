@@ -48,6 +48,9 @@ Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'z0mbix/vim-shfmt'
 
+" Plugin 'prabirshrestha/vim-lsp'
+" Plugin 'mattn/vim-lsp-settings'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -330,7 +333,7 @@ let g:ale_linters = {
     \ }
 
 " Python specific
-autocmd BufWritePre *.py,*.pyi execute ':Black'
+" autocmd BufWritePre *.py,*.pyi execute ':Black'
 au BufNewFile,BufRead *.py,*.pyi set textwidth=87 colorcolumn=88
 
 " Miscellaneous utility functions

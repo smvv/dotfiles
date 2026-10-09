@@ -121,6 +121,8 @@ gch() {
 alias ytw="yarn test --watch"
 alias ytd="yarn test:debug --watch"
 
+alias gab="git absorb --and-rebase"
+
 export RUST_BACKTRACE=full
 export PATH="$PATH:$PWD/node_modules/.bin"
 export RUST_MIN_STACK=16777216
@@ -132,4 +134,7 @@ export RUST_MIN_STACK=16777216
 # --use-color:
 #     Enable ANSI color codes.
 # export LESS="--ignore-case --use-color"
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.duckdb/cli/latest:/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
+
+alias ci1='ssh -tt ci1 "tmux new-session -A -s main"'
